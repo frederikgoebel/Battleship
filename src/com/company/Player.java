@@ -1,8 +1,6 @@
 package com.company;
 
-/**
- * Created by frederikgoebel on 15.10.17.
- */
+
 public class Player {
     public Map map;
     Input input;
@@ -28,6 +26,7 @@ public class Player {
         int shipsToSet = Map.maxShips;
         while(shipsToSet > 0){
             System.out.printf("Ship number %d\n",Map.maxShips-shipsToSet+1);
+
             if (!input.ProcessInput("Enter x: ", Map.sizeX))
                 return false;
             int inputX = input.input;

@@ -2,9 +2,7 @@ package com.company;
 
 import java.util.Scanner;
 
-/**
- * Created by frederikgoebel on 15.10.17.
- */
+
 public class Input {
     Scanner scanner;
     int input;
@@ -29,8 +27,14 @@ public class Input {
     }
 
     public String GetName(String message){
-        System.out.print(message);
-        return scanner.nextLine();
+        while (true) {
+            System.out.print(message);
+            String in = scanner.nextLine();
+            if(in.length() > 8)
+                System.out.println("Name must be shorter than 8 characters");
+            else
+                return in;
+        }
     }
 }
 

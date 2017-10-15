@@ -1,11 +1,8 @@
 package com.company;
 
 import java.util.Arrays;
-import java.util.Scanner;
 
-/**
- * Created by frederikgoebel on 15.10.17.
- */
+
     public class Map {
         static public int sizeX = 10;
         static public int sizeY = 10;
@@ -22,7 +19,6 @@ import java.util.Scanner;
         }
 
         ships = new boolean[Map.sizeX][Map.sizeY];
-        this.AddShip(2,3);
     }
 
     public boolean AddShip(int x, int y){
