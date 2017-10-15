@@ -21,11 +21,13 @@ import java.util.Arrays;
         ships[2][1] = true;
     }
 
-    public void Uncover(int x, int y){
+    public boolean Uncover(int x, int y){
         if(ships[x][y]){
             map[x][y] = '#';
+            return true;
         } else{
             map[x][y] = '~';
+            return false;
         }
     }
 

@@ -7,9 +7,8 @@ public class Main {
 
     public static void main(String[] args) {
 
-
-        Map map = new Map(8,8);
-        Input input = new Input();
+        Player player1 = new Player(10,10);
+        Player player2 = new Player(10,10);
 
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         System.out.println("~~~~~~~~~~ Battleships ~~~~~~~~~~");
@@ -19,24 +18,20 @@ public class Main {
         System.out.println("Enter 'exit' at any time to quit.");
         System.out.println("~~~~~~~~~~~~~ New Game ~~~~~~~~~~");
         System.out.println();
-        int inputX = 0;
-        int inputY = 0;
+        int inputX;
+        int inputY;
 
         while (true) {
 
-            map.Draw();
-            System.out.println();
-
-            if (!input.ProcessInput("Enter x: "))
+            player1.Draw();
+            if (!player1.Update())
                 break;
-            inputX = input.input;
 
-            if (!input.ProcessInput("Enter y: "))
+
+            player2.Draw();
+            if (!player2.Update())
                 break;
-            inputY = input.input;
 
-
-            map.Uncover(inputX,inputY);
 
 
         }
