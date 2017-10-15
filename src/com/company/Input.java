@@ -27,5 +27,10 @@ public class Input {
             System.out.println("Invalid input.\nEnter an number between 0 and " + max + " or 'exit'");
         }
     }
+
+    public String GetName(String message){
+        System.out.print(message);
+        return scanner.nextLine();
+    }
 }
 

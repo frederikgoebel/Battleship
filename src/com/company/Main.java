@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.Scanner;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -11,10 +13,28 @@ public class Main {
         System.out.println("~~~~~~~~~~ Battleships ~~~~~~~~~~");
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         System.out.println();
-        System.out.println("Water:  ~ | Ship:   #");
-        System.out.println("Enter 'exit' at any time to quit.");
+        System.out.println("Instructions:");
+        System.out.println("    Water:  ~\n    Ship:   #");
+        System.out.println("    Enter 'exit' at any time to quit.");
+        System.out.println();
+        System.out.print("Loading");
+        for(int i=0; i<26; i++){
+            System.out.print(".");
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+            }
+        }
+        Flush();
         System.out.println("~~~~~~~~~~~~~ New Game ~~~~~~~~~~");
         System.out.println();
+
+        if(!player1.SetUp(player2))
+            return;
+        Flush();
+        if(!player2.SetUp(player1))
+            return;
+        Flush();
 
         while (true) {
 
@@ -30,5 +50,14 @@ public class Main {
         }
 
     }
+
+    public static void Flush(){
+        for(int i=0; i< 100; i++){
+            System.out.println();
+        }
+
+    }
+
+
 
 }

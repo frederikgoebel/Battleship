@@ -1,6 +1,7 @@
 package com.company;
 
 import java.util.Arrays;
+import java.util.Scanner;
 
 /**
  * Created by frederikgoebel on 15.10.17.
@@ -8,6 +9,7 @@ import java.util.Arrays;
     public class Map {
         static public int sizeX = 10;
         static public int sizeY = 10;
+        static public int maxShips = 3;
 
     char[][] map;
         boolean[][] ships;
@@ -23,9 +25,14 @@ import java.util.Arrays;
         this.AddShip(2,3);
     }
 
-    public void AddShip(int x, int y){
+    public boolean AddShip(int x, int y){
+        if(ships[x][y]){
+            return false;
+        }
+
         shipCount++;
         ships[x][y] = true;
+        return true;
     }
 
     public boolean Uncover(int x, int y){
