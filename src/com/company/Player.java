@@ -10,22 +10,22 @@ public class Player {
 
     static int players = 0;
 
-    public Player(int mapSizeX,int mapSizeY){
-        map = new Map(mapSizeX,mapSizeY);
+    public Player(){
+        map = new Map();
         input = new Input();
 
         Player.players++;
         id = Player.players;
     }
 
+
     public boolean Update(){
 
-
-        if (!input.ProcessInput("Enter x: "))
+        if (!input.ProcessInput("Enter x: ", Map.sizeX))
             return false;
         int inputX = input.input;
 
-        if (!input.ProcessInput("Enter y: "))
+        if (!input.ProcessInput("Enter y: ", Map.sizeY))
             return false;
         int inputY = input.input;
 
@@ -35,6 +35,14 @@ public class Player {
         } else{
             System.out.println("Just some water...");
         }
+
+        if(map.shipCount == 0){
+            System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            System.out.printf("~~~~~~~~~ Player%d won! ~~~~~~~~~\n", id);
+            System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            return false;
+        }
+
         return true;
     }
 

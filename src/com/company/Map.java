@@ -6,24 +6,32 @@ import java.util.Arrays;
  * Created by frederikgoebel on 15.10.17.
  */
     public class Map {
-        char[][] map;
-        boolean[][] ships;
+        static public int sizeX = 10;
+        static public int sizeY = 10;
 
-    public Map(int sizeX, int sizeY){
-        map = new char[sizeX][sizeY];
+    char[][] map;
+        boolean[][] ships;
+        public int shipCount = 0;
+
+    public Map(){
+        map = new char[Map.sizeX][Map.sizeY];
         for(int i=0; i< map.length; i++){
             Arrays.fill(map[i], ' ');
         }
 
-        ships = new boolean[sizeX][sizeY];
-        ships[2][3] = true;
-        ships[1][3] = true;
-        ships[2][1] = true;
+        ships = new boolean[Map.sizeX][Map.sizeY];
+        this.AddShip(2,3);
+    }
+
+    public void AddShip(int x, int y){
+        shipCount++;
+        ships[x][y] = true;
     }
 
     public boolean Uncover(int x, int y){
         if(ships[x][y]){
             map[x][y] = '#';
+            shipCount--;
             return true;
         } else{
             map[x][y] = '~';

@@ -1,14 +1,11 @@
 package com.company;
 
-import java.util.Arrays;
-import java.util.Scanner;
-
 public class Main {
 
     public static void main(String[] args) {
 
-        Player player1 = new Player(10,10);
-        Player player2 = new Player(10,10);
+        Player player1 = new Player();
+        Player player2 = new Player();
 
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         System.out.println("~~~~~~~~~~ Battleships ~~~~~~~~~~");
@@ -18,8 +15,6 @@ public class Main {
         System.out.println("Enter 'exit' at any time to quit.");
         System.out.println("~~~~~~~~~~~~~ New Game ~~~~~~~~~~");
         System.out.println();
-        int inputX;
-        int inputY;
 
         while (true) {
 
@@ -32,13 +27,7 @@ public class Main {
             if (!player2.Update())
                 break;
 
-
-
         }
-
-    }
-
-    public static void GetInput(){
 
     }
 
