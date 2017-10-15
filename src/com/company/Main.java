@@ -6,17 +6,10 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
 
-        char[][] map = new char[8][8];
-        for(int i=0; i< map.length; i++){
-            Arrays.fill(map[i],' ');
-        }
 
-        boolean[][] ships = new boolean[8][8];
-        ships[2][3] = true;
-        ships[5][3] = true;
-        ships[2][6] = true;
+        Map map = new Map(8,8);
+        Input input = new Input();
 
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         System.out.println("~~~~~~~~~~ Battleships ~~~~~~~~~~");
@@ -31,49 +24,26 @@ public class Main {
 
         while (true) {
 
-            for (int y = -1; y < map.length; y++) {
-                for (int x = -1; x < map.length; x++) {
-                    if(y == -1){
-                        if(x == -1) {
-                            System.out.print("   ");
-                        } else{
-                            System.out.print(" " + x + " ");
-                        }
-                    } else if(x == -1){
-                        System.out.print(" " + y + " ");
-                    } else {
-                        System.out.print("[" + map[x][y] + "]");
-                    }
-                }
-                System.out.println();
-            }
+            map.Draw();
             System.out.println();
 
-            System.out.print("Enter x: ");
-            if(scanner.hasNextInt()) {
-                inputX = scanner.nextInt();
-            } else if(scanner.hasNext()) {
-                if(scanner.next().equals("exit")){
-                    break;
-                }
-            }
+            if (!input.ProcessInput("Enter x: "))
+                break;
+            inputX = input.input;
 
-            System.out.print("Enter y: ");
-            if(scanner.hasNextInt()) {
-                inputY = scanner.nextInt();
-            } else if(scanner.hasNext()) {
-                if(scanner.next().equals("exit")){
-                    break;
-                }
-            }
+            if (!input.ProcessInput("Enter y: "))
+                break;
+            inputY = input.input;
 
-            if(ships[inputX][inputY]){
-                map[inputX][inputY] = '#';
-            } else{
-                map[inputX][inputY] = '~';
-            }
+
+            map.Uncover(inputX,inputY);
+
 
         }
+
+    }
+
+    public static void GetInput(){
 
     }
 
